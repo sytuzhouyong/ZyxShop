@@ -1,0 +1,14 @@
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class="section section__gap">
+    <view class="section__title">switch</view>
+    <switch name="switch"></switch>
+  </view>
+
+  <view class="section section__gap">
+    <view class="section__title">slider</view>
+    <slider name="slider" show-value></slider>
+  </view>
+
+  
+  
+</form>
