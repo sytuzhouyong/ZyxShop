@@ -1,1 +1,6 @@
-{}
+{
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#ff0",
+  "navigationBarTitleText": "Demo",
+  "navigationBarTextStyle": "black"
+}

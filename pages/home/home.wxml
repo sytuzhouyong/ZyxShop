@@ -1,0 +1,22 @@
+<!--pages/home/home.wxml-->
+<scroll-view class="category-view" scroll-x>
+  <view style='margin-left:10rpx; padding-left:10rpx; width:10rpx;'></view>
+  <view class="category-item {{item.selected ? 'category-title-selected' : 'category-title-unselected'}}" 
+    bindtap='tapOnCategoryItem' 
+    data-category='{{item}}' data-index='{{index}}'  
+    wx:for="{{categories}}" wx:key="category">
+      {{item.title}}
+  </view>
+</scroll-view>
+<view class='line'></view>
+
+ <swiper indicator-dots='true' indicator-color='#FFFFFF' indicator-active-color='#FF1111'>
+  <block wx:for='{{imageUrls}}' wx:key='swiper-item'>
+    <swiper-item>
+      <image src='{{item}}' width='335' height='150'></image>
+    </swiper-item>
+  </block>
+</swiper>
+
+<view>
+</view>

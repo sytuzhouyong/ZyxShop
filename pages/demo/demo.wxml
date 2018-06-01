@@ -1,3 +1,13 @@
+<template name="test">
+  <view>
+    First Name: {{ firstName }}, Last Name: {{ lastName }}
+  </view>
+</template>
+
+<template is="test" data="{{...testData1}}"></template>
+<template is="test" data="{{...testData2}}"></template>
+
+
 <form bindsubmit="formSubmit" bindreset="formReset">
   <view class="section section__gap">
     <view class="section__title">switch</view>
@@ -5,10 +15,20 @@
   </view>
 
   <view class="section section__gap">
-    <view class="section__title">slider</view>
+    <view class="section__title">hello, {{ demoText }}</view>
     <slider name="slider" show-value></slider>
   </view>
 
+  <button bindtap='changeme'>click me</button>
+
+  <view class="section">
+    <view class="section__title">input</view>
+    <input name="input" placeholder='please input here'></input>
+  </view>
   
-  
+  <view style="height: 50px"></view>
+  <view class='button-area'>
+    <button form-type='submit'>Submit</button>
+    <button form-type='reset'>Reset</button>
+  </view>
 </form>

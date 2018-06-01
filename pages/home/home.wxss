@@ -1,0 +1,32 @@
+/* pages/home/home.wxss */
+.category-view {
+  display: flex;
+  width: 100%;
+  /* background-color: antiquewhite; */
+  white-space: nowrap;
+}
+
+.line {
+  background-color: #dddddd;
+  height: 0.5rpx;
+}
+
+.category-item {
+  height: 60rpx;
+  width: 100rpx;
+  text-align: center; 
+  display: inline-block; /* 水平排列 */
+  font: 12px Helvetica;
+}
+
+.category-title-unselected {
+  color: #666666;
+}
+
+.category-title-selected {
+  color: #f45;
+}
+
+.category-item-hover {
+  color: red;
+}
