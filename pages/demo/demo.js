@@ -1,7 +1,7 @@
 const app = getApp()
 
 var global_data = {
-  name: 'wechat'
+  name: 'wechat',
 }
 
 Page({
@@ -13,6 +13,9 @@ Page({
   onShow: function() {
     console.log("show")
     app.get
+  },
+  onLoad: function(param) {
+    console.log(param.id)
   },
   changeme: function(e) {
     console.log(this.demoText)

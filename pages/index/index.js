@@ -22,7 +22,7 @@ Page({
       url: '../test-swiper/test-swiper'
     })
   },
-  onLoad: function () {
+  onLoad: function (param) {
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,

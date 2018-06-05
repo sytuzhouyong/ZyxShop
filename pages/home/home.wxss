@@ -30,3 +30,26 @@
 .category-item-hover {
   color: red;
 }
+
+.shelf-nav {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30rpx;
+  background-color: peachpuff;
+}
+
+.shelf-nav-item {
+  /* width: 25%; */
+  margin-bottom: 20rpx;
+  text-align: center;
+}
+
+.shelf-nav-item__image {
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 50%;
+  border: 1px solid #d9d9d9;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

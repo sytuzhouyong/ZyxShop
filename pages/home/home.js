@@ -6,7 +6,7 @@ Page({
    */
   data: {
     categories: [
-      { "title": "热门", "selected":false}, 
+      { "title": "热门", "selected": false}, 
       { "title": "男装", "selected": false },
       { "title": "鞋包", "selected": false },
       { "title": "手机", "selected": false },
@@ -23,6 +23,17 @@ Page({
       'https://gw.alicdn.com/i1/TB1.MF6rL9TBuNjy0FcXXbeiFXa_.jpg',
       'https://gw.alicdn.com/i3/TB1MFqxrHuWBuNjSszgXXb8jVXa_.jpg'
     ],
+    shelfNavList: [
+      { 'id': 1, 'name': '新品上架', 'imagePath': '../../images/shop.png' },
+      { 'id': 2, 'name': '新品上架', 'imagePath': '../../images/shop.png' },
+      { 'id': 3, 'name': '新品上架', 'imagePath': '../../images/shop.png' },
+      { 'id': 4, 'name': '新品上架', 'imagePath': '../../images/shop.png' },
+      { 'id': 5, 'name': '新品上架', 'imagePath': '../../images/shop.png' },
+      { 'id': 6, 'name': '新品上架', 'imagePath': '../../images/shop.png' },
+      { 'id': 7, 'name': '新品上架', 'imagePath': '../../images/shop.png' },
+      { 'id': 8, 'name': '新品上架', 'imagePath': '../../images/shop.png' },
+    ],
+    numberOfShelfItemPerLine: 4,
     
     // 选择分类列表的信息
     category_info: {
