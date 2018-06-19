@@ -7,8 +7,9 @@
     "pages/test-swiper/test-swiper"
   ],
   "window": {
+    "backgroundColor": "#f0145a",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#f0145a",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
   }

@@ -1,6 +1,7 @@
 {
   "backgroundTextStyle": "light",
-  "navigationBarBackgroundColor": "#EB5640",
+  "navigationBarBackgroundColor": "#f0145a",
   "navigationBarTitleText": "小黑鱼商城",
-  "navigationBarTextStyle": "light"
+  "navigationBarTextStyle": "light",
+  "enablePullDownRefresh": true
 }

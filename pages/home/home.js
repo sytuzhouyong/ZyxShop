@@ -29,16 +29,28 @@ Page({
       { 'id': 3, 'name': '新品上架', 'imagePath': '../../images/shop.png' },
       { 'id': 4, 'name': '新品上架', 'imagePath': '../../images/shop.png' },
       { 'id': 5, 'name': '新品上架', 'imagePath': '../../images/shop.png' },
-      { 'id': 6, 'name': '新品上架', 'imagePath': '../../images/shop.png' },
+      { 'id': 6, 'name': '上架', 'imagePath': '../../images/shop.png' },
       { 'id': 7, 'name': '新品上架', 'imagePath': '../../images/shop.png' },
       { 'id': 8, 'name': '新品上架', 'imagePath': '../../images/shop.png' },
     ],
-    numberOfShelfItemPerLine: 4,
+    productList: [
+      { 'id': 1, 'name': '商品1', 'imagePath': '../../images/shop.png' },
+      { 'id': 2, 'name': '商品2', 'imagePath': '../../images/shop.png' },
+      { 'id': 3, 'name': '商品3', 'imagePath': '../../images/shop.png' },
+      { 'id': 4, 'name': '商品4', 'imagePath': '../../images/shop.png' },
+      { 'id': 5, 'name': '商品5', 'imagePath': '../../images/shop.png' },
+      { 'id': 6, 'name': '商品6', 'imagePath': '../../images/shop.png' },
+      { 'id': 7, 'name': '商品7', 'imagePath': '../../images/shop.png' },
+      { 'id': 8, 'name': '商品8', 'imagePath': '../../images/shop.png' },
+    ],
+    numberOfIconItemsPerLine: 5,
     
     // 选择分类列表的信息
     category_info: {
       last_select_index: 0,
-    }
+    },
+
+    selectedAddress: '选择收货地址',
   },
 
   tapOnCategoryItem: function (e) {
@@ -58,6 +70,21 @@ Page({
     this.setData({
       ['categories[' + lastSelectIndex + '].selected']: false,
       ['categories[' + index + '].selected']: true
+    })
+  },
+
+  chooseAddress: function() {
+    let self = this
+    wx.chooseAddress({
+      success: function(res) {
+        console.log(res.userName)
+        self.setData({
+          selectedAddress: res.userName
+        })
+      },
+      fail: function(res) {
+        console.log("获取收货地址失败")
+      }
     })
   },
 
@@ -101,7 +128,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    console.log('pull down')
+    wx.showNavigationBarLoading() //在标题栏中显示加载
+
+    setTimeout(function() {
+      wx.hideNavigationBarLoading()
+      wx.stopPullDownRefresh()
+    }, 1500)
+    
   },
 
   /**

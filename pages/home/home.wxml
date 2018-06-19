@@ -20,10 +20,23 @@
 
 <view style='width:100%; height:20rpx'></view>
 
+<button bindtap='chooseAddress'>{{selectedAddress}}</button>
+
 <view class='shelf-nav'>
-  <view class='shelf-nav-item' style='width:{{100 / numberOfShelfItemPerLine}}%;' wx:for="{{shelfNavList}}" wx:key="shelf">
+  <view class='shelf-nav-item' style='width:{{100 / numberOfIconItemsPerLine}}%;' wx:for="{{shelfNavList}}" wx:key="shelf">
     <navigator url='../demo/demo?id={{item.id}}'>
       <image src='{{item.imagePath}}' mode='aspectFill' class='shelf-nav-item__image'></image> 
+      <text style='font-size:12px;'>{{item.name}}</text>
+    </navigator>
+  </view>
+</view>
+
+<view style='width:100%; height:20rpx; background-color:#EAEAEA'></view>
+
+<view class='products-container'>
+  <view class='product-item-container' wx:for="{{productList}}" wx:key='product'>
+    <navigator url='../demo/demo?id={{item.id}}'>
+      <image src='{{item.imagePath}}' mode='aspectFit' class='product-item__image'></image> 
       <text style='font-size:12px;'>{{item.name}}</text>
     </navigator>
   </view>
