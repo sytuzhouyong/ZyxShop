@@ -31,7 +31,15 @@
 		},
 		"miniprogram": {
 			"current": -1,
-			"list": []
+			"list": [
+				{
+					"id": -1,
+					"name": "测试 demo",
+					"pathName": "pages/demo/demo",
+					"query": "",
+					"scene": "1001"
+				}
+			]
 		}
 	}
 }

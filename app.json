@@ -2,8 +2,8 @@
   "pages": [
     "pages/home/home",
     "pages/index/index",
-    "pages/logs/logs",
     "pages/demo/demo",
+    "pages/logs/logs",
     "pages/test-swiper/test-swiper"
   ],
   "window": {

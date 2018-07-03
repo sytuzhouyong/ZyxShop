@@ -1,4 +1,7 @@
 // pages/home/home.js
+
+const app = getApp()
+
 Page({
 
   /**
@@ -35,7 +38,7 @@ Page({
     ],
     productList: [
       { 'id': 1, 'name': '商品1商品1商品1商品1商品1商品1商品1商品1', 'imagePath': '../../images/shop.png' },
-      { 'id': 2, 'name': '商品2商品2商品2商品2商品2商品2商品2商品2', 'imagePath': '../../images/shop.png' },
+      { 'id': 2, 'name': '商品2', 'imagePath': '../../images/shop.png' },
       { 'id': 3, 'name': '商品3', 'imagePath': '../../images/shop.png' },
       { 'id': 4, 'name': '商品4', 'imagePath': '../../images/shop.png' },
       { 'id': 5, 'name': '商品5', 'imagePath': '../../images/shop.png' },
@@ -51,11 +54,8 @@ Page({
     },
 
     selectedAddress: '选择收货地址',
-    code: 0,
-    animationData: {},
     indicatorMarginLeft: (100 - 80)/2,
     indicatorAnimation: {},
-    scrollCategoryView: 'category-item-0',
   },
 
   tapOnCategoryItem: function (e) {
@@ -72,18 +72,15 @@ Page({
       duration: 300,
       timingFunction: "linear",
     })
-    var left = (100 * select_index) / 2
-    animation.translate(left).step()
 
-    var newView = this.data.scrollCategoryView
-    var currentMargin = 
+    console.log(app.globalData.widthScale)
+    var left = (100 * select_index) / app.globalData.widthScale
+    console.log('left =' + left)
+    animation.translateX(left).step()
 
     this.setData({
       indicatorAnimation: animation.export(),
-      // scrollCategoryView: 'category-item-' + select_index
     })
-
-    console.log(this.data.category_info)
   },
 
   selectCategoryAtIndex: function(index) {
@@ -140,30 +137,14 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    var info = wx.getSystemInfo()
-    console.log(JSON.stringify(info))
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var animation = wx.createAnimation({
-      duration: 1000,
-      timingFunction: "ease",
-    })
-    animation.scale(2, 2).rotate(45).step();
-
-    this.setData({
-      animationData: animation.export()
-    })
-
-    setTimeout(function () {
-      animation.translate(30).step();
-      this.setData({
-        animationData: animation.export()
-      })
-    }.bind(this), 1000)
+  
   },
 
   /**

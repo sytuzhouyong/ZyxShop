@@ -80,14 +80,14 @@
   text-align: center;
 }
 
-.product-item__image {
+.product1x2-item__image {
   margin: auto;
   width: 90%;
   height: 300rpx;
   background-color: #F59;
 }
 
-.product-item__text {
+.product1x2-item__text {
   margin: auto; 
   width: 90%;
   margin-top: 5rpx;
