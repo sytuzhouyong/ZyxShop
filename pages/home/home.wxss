@@ -2,6 +2,7 @@
 .category-view {
   display: flex;
   width: 100%;
+  height: 100rpx;
   /* background-color: antiquewhite; */
   white-space: nowrap;
 }
@@ -12,9 +13,10 @@
 }
 
 .category-item {
-  height: 60rpx;
+  height: 40rpx;
   width: 100rpx;
-  text-align: center; 
+  margin-top: 30rpx;  /* （100 - 40）/ 2 */
+  text-align: center;  /* 文本居中 */
   display: inline-block; /* 水平排列 */
   font: 12px Helvetica;
 }
@@ -29,6 +31,12 @@
 
 .category-item-hover {
   color: red;
+}
+
+.indicator {
+  background:red; 
+  width:80rpx; 
+  height:6rpx; 
 }
 
 /* -------------------- */
@@ -78,4 +86,75 @@
   width: 90%;
   height: 260rpx;
 
+}
+
+
+
+
+/*    */
+
+.ub
+{
+	display: -webkit-box;
+	display: -moz-box;
+	display: box;
+	position:relative;
+}
+
+.ub-fh
+{
+	width:100%;
+}
+
+.ub-fv
+{
+	height:100%;
+}
+
+.ub-ac
+{
+	-webkit-box-align:center;
+	-moz-box-align:center;
+	box-align:center;
+}
+
+.ub-ae
+{
+	-webkit-box-align:end;
+	-moz-box-align:end;
+	box-align:end;
+}
+
+.ub-pc
+{
+	-webkit-box-pack:center;
+	-moz-box-pack:center;
+	box-pack:center;
+}
+.ub-pe
+{
+	-webkit-box-pack:end;
+	-moz-box-pack:end;
+	box-pack:end;
+}
+
+.ub-pj
+{
+	-webkit-box-pack:justify;
+	-moz-box-pack:justify;
+	box-pack:justify;
+}
+
+.ub-ver
+{
+	-webkit-box-orient:vertical;
+	-moz-box-orient:vertical;
+	box-orient:vertical;
+}
+.ub-f1
+{
+	position:relative;
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;  
+	box-flex: 1;
 }

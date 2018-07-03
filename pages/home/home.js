@@ -51,6 +51,10 @@ Page({
     },
 
     selectedAddress: '选择收货地址',
+    code: 0,
+    animationData: {},
+    indicatorMarginLeft: (100 - 80)/2,
+    indicatorAnimation: {},
   },
 
   tapOnCategoryItem: function (e) {
@@ -62,17 +66,31 @@ Page({
       ['category_info.last_select_index']: select_index
     })
 
+    // 设置动画
+    var animation = wx.createAnimation({
+      duration: 500,
+      timingFunction: "ease",
+    })
+    var left = (100 * select_index) / 2
+    animation.translate(left).step()
+
+    this.setData({
+      indicatorAnimation: animation.export()
+    })
+
     console.log(this.data.category_info)
   },
 
   selectCategoryAtIndex: function(index) {
     var lastSelectIndex = this.data.category_info.last_select_index
+    // 设置给定所引处的索引
     this.setData({
       ['categories[' + lastSelectIndex + '].selected']: false,
       ['categories[' + index + '].selected']: true
     })
   },
 
+  // 获取微信用户地址
   chooseAddress: function() {
     let self = this
     wx.chooseAddress({
@@ -94,20 +112,48 @@ Page({
   onLoad: function (options) {
     this.selectCategoryAtIndex(0)
     
+    // wx.request({
+    //   url: 'https://www.baidu.com',
+    //   method: 'POST',
+    //   data: {},
+    //   success: function (res) {
+    //     console.log(res)
+    //     var code = res.statusCode
+      
+    //   },
+    //   fail: function (res) {
+    //     console.log(res);
+    //   }
+    // })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var animation = wx.createAnimation({
+      duration: 1000,
+      timingFunction: "ease",
+    })
+    animation.scale(2, 2).rotate(45).step();
+
+    this.setData({
+      animationData: animation.export()
+    })
+
+    setTimeout(function () {
+      animation.translate(30).step();
+      this.setData({
+        animationData: animation.export()
+      })
+    }.bind(this), 1000)
   },
 
   /**
