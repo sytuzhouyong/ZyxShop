@@ -1,6 +1,6 @@
 <!--pages/home/home.wxml-->
-<scroll-view class="category-view" scroll-x>
-  <view class="category-item {{item.selected ? 'category-title-selected' : 'category-title-unselected'}}" bindtap='tapOnCategoryItem' data-category='{{item}}' data-index='{{index}}' wx:for="{{categories}}" wx:key="category">
+<scroll-view class="category-view" scroll-x scroll-into-view='{{scrollCategoryView}}' scroll-with-animation='true' bindscroll='scroll'>
+  <view class="category-item {{item.selected ? 'category-title-selected' : 'category-title-unselected'}}" id='category-item-{{index}}' bindtap='tapOnCategoryItem' data-category='{{item}}' data-index='{{index}}' wx:for="{{categories}}" wx:key="category">
     {{item.title}}
   </view>
   <view animation='{{indicatorAnimation}}' class='indicator' style='margin-left:{{indicatorMarginLeft}}rpx;'></view>
@@ -15,27 +15,27 @@
   </block>
 </swiper>
 
-<view style='width:100%; height:40rpx'></view>
-<view animation="{{animationData}}" style="background:red; height:100rpx; width:100rpx"></view>
+<view style='width:100%; height:30rpx; background-color:#EAEAEA'></view>
+<!-- <view animation="{{animationData}}" style="background:red; height:100rpx; width:100rpx"></view> -->
 
 <!-- <button bindtap='chooseAddress'>{{selectedAddress}}</button> -->
 
-<!-- <view class='shelf-nav'>
+<view class='shelf-nav'>
   <view class='shelf-nav-item' style='width:{{100 / numberOfIconItemsPerLine}}%;' wx:for="{{shelfNavList}}" wx:key="shelf">
     <navigator url='../demo/demo?id={{item.id}}'>
       <image src='{{item.imagePath}}' mode='aspectFill' class='shelf-nav-item__image'></image> 
       <text style='font-size:12px;'>{{item.name}}</text>
     </navigator>
   </view>
-</view> -->
+</view> 
 
-<!-- <view style='width:100%; height:20rpx; background-color:#EAEAEA'></view> -->
+<view style='width:100%; height:30rpx; background-color:#EAEAEA'></view> 
 
-<!-- <view class='products-container'>
-  <view class='product-item-container' wx:for="{{productList}}" wx:key='product'>
+<view class='products1x2-view' scroll-y>
+  <view class='product1x2-item-view' wx:for="{{productList}}" wx:key='product'>
     <navigator url='../demo/demo?id={{item.id}}'>
       <image src='{{item.imagePath}}' mode='aspectFit' class='product-item__image'></image> 
-      <text style='font-size:12px;'>{{item.name}}</text>
+      <view class='product-item__text'>{{item.name}}</view> 
     </navigator>
   </view>
-</view> -->
+</view> 

@@ -10,25 +10,13 @@ Page({
     testData1: { "firstName": "Jack", "lastName": "Dothen" },
     testData2: { "firstName": "Lucy", "lastName": "Rose" },
   },
-  onShow: function() {
-    console.log("show")
-    app.get
-  },
-  onLoad: function(param) {
-    console.log(param.id)
-  },
   changeme: function(e) {
     console.log(this.demoText)
     this.setData({
       demoText: 'MINA'
     })
   },
-  formSubmit: function(e) {
-    console.log(e.detail.value)
-  },
-  formReset: function(e) {
-    console.log('reset事件')
-  }
+  
 })
 
 

@@ -34,8 +34,8 @@ Page({
       { 'id': 8, 'name': '新品上架', 'imagePath': '../../images/shop.png' },
     ],
     productList: [
-      { 'id': 1, 'name': '商品1', 'imagePath': '../../images/shop.png' },
-      { 'id': 2, 'name': '商品2', 'imagePath': '../../images/shop.png' },
+      { 'id': 1, 'name': '商品1商品1商品1商品1商品1商品1商品1商品1', 'imagePath': '../../images/shop.png' },
+      { 'id': 2, 'name': '商品2商品2商品2商品2商品2商品2商品2商品2', 'imagePath': '../../images/shop.png' },
       { 'id': 3, 'name': '商品3', 'imagePath': '../../images/shop.png' },
       { 'id': 4, 'name': '商品4', 'imagePath': '../../images/shop.png' },
       { 'id': 5, 'name': '商品5', 'imagePath': '../../images/shop.png' },
@@ -55,6 +55,7 @@ Page({
     animationData: {},
     indicatorMarginLeft: (100 - 80)/2,
     indicatorAnimation: {},
+    scrollCategoryView: 'category-item-0',
   },
 
   tapOnCategoryItem: function (e) {
@@ -68,14 +69,18 @@ Page({
 
     // 设置动画
     var animation = wx.createAnimation({
-      duration: 500,
-      timingFunction: "ease",
+      duration: 300,
+      timingFunction: "linear",
     })
     var left = (100 * select_index) / 2
     animation.translate(left).step()
 
+    var newView = this.data.scrollCategoryView
+    var currentMargin = 
+
     this.setData({
-      indicatorAnimation: animation.export()
+      indicatorAnimation: animation.export(),
+      // scrollCategoryView: 'category-item-' + select_index
     })
 
     console.log(this.data.category_info)
@@ -88,6 +93,10 @@ Page({
       ['categories[' + lastSelectIndex + '].selected']: false,
       ['categories[' + index + '].selected']: true
     })
+  },
+
+  scroll: function(e) {
+    console.log('scroll...' + e)
   },
 
   // 获取微信用户地址
@@ -131,7 +140,8 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    var info = wx.getSystemInfo()
+    console.log(JSON.stringify(info))
   },
 
   /**
@@ -187,8 +197,29 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-  
+  onReachBottom: function (e) {
+    console.log(JSON.stringify(e))
+    console.log('pull up')
+
+    let self = this
+
+    wx.showLoading({
+      title: '正在加载中...',
+    })
+
+    setTimeout(function() {
+      wx.hideLoading()
+      var newProudctList = self.data.productList
+      for (let i=0; i<6; i++) {
+        var index = newProudctList.length
+        newProudctList = newProudctList.concat({ 'id': index, 'name': '商品' + index, 'imagePath': '../../images/shop.png' })
+      }
+      
+      self.setData({
+        productList: newProudctList
+      })
+      
+    }, 2000)
   },
 
   /**
