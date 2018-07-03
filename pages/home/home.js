@@ -54,7 +54,7 @@ Page({
     },
 
     selectedAddress: '选择收货地址',
-    indicatorMarginLeft: (100 - 80)/2,
+    indicatorMarginLeft: (100 - 80) * app.globalData.widthScale,
     indicatorAnimation: {},
   },
 
@@ -74,7 +74,7 @@ Page({
     })
 
     console.log(app.globalData.widthScale)
-    var left = (100 * select_index) / app.globalData.widthScale
+    var left = (100 * select_index) * app.globalData.widthScale
     console.log('left =' + left)
     animation.translateX(left).step()
 
