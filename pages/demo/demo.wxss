@@ -1,72 +1,119 @@
-.commodity_screen {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: #000;
-  opacity: 0.2;
-  overflow: hidden;
-  z-index: 1000;
-  color: #fff;
+ @import "../../utils/css/flex.wxss";
+
+/*模态框*/
+.modals {
+  position:fixed; 
+  z-index: 999; 
+  top:0; left: 0; right:0; bottom: 0;
 }
- 
-.commodity_attr_box {
-  width: 80%;
-  overflow: hidden;
-  position: fixed;
-  margin-top: 380rpx;
-  margin-left: 10%;
-  z-index: 2000;
-  background: #fff;
-  border-radius: 10px;
+
+.modals-bg {
+  position:absolute; 
+  z-index:1000; 
+  top:0; left: 0; right:0; bottom: 0; 
+  background-color: rgba(0,0,0,.5);
 }
-.btn-line{
-  width: 1px;
-  background-color: #dcdcdc;
+
+.bottom-dialog-body {
+  position:absolute; 
+  z-index:10001; 
+  bottom:0; left:0; right:0; 
+  height:1000rpx; 
+  background-color: #fff;
 }
-.btn-view{
-  width: 100%;
-  display: flex;
-  height: 40px;
-  flex-direction: row;
-  justify-content: space-around
+/*动画前初始位置*/
+.bottom-pos {
+  -webkit-transform:translateY(100%);
+  transform:translateY(100%);
 }
-.line-top{
-   width: 100%;
-   height: 1px;
-   background-color: #dcdcdc;
+
+.dialog-container {
+  padding-left: 30rpx;
+  padding-right: 30rpx;
 }
-.btn-cancel{
-  width: 49%;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+
+.icon {
+  margin-top: -30rpx;
+  background-color: #fff;
+  width: 230rpx;
+  height: 230rpx;
 }
-.dialog-title{
-  margin-top: 15px;
-  text-align: center;
-  margin-bottom: 10px;
+
+.detail {
+  margin-left: 40rpx;
+  width: 300rpx;
+  height: 190rpx;
 }
-.input01{
- width: 100%;
- height: 20rpx;
- background: #f1f1f1;
+
+.detail-attr-selected {
+  font: 14px PingFangSC-Regular;
+  color: #222222;
 }
-.input-style{
-  width: 90%;
-  margin-left: 5%;
-  height: 80px;
-  text-align: center;
+
+.attr-list {
+  margin-top: 0rpx;
+}
+
+.attr-container {
+  margin-top: 60rpx;
+}
+
+.attr-title {
+  font: 14px PingFangSC-Medium;
+  color: #222222;
+  letter-spacing: 0;
+  line-height: 14px;
+}
+
+.attr-items {
+  font: 14px PingFangSC-Light;
+  color: #222222;
+}
+
+.attr-item {
+  margin-right: 30rpx;
+  margin-top: 30rpx;
+  padding-left: 34rpx;
+  padding-right: 34rpx;
   
+  height: 60rpx;
+
+  border: 1px solid #DDDDDD;
+  border-radius: 2px;
 }
- 
-.input-view{
-  height: 100px;
-  width: 100%;
-  margin-left: 0%;
-  border-radius: 0px;
-  margin-bottom: 0px;
-  background: #f1f1f1;
+
+.attr-item-unselected {
+  background: white;
+}
+
+.attr-item-selected {
+  background-image: linear-gradient(-90deg, #FCE105 2%, #FECD15 100%);
+  border: 1px solid #FCE105;
+}
+
+.button-confirm {
+  margin-top: 100rpx;
+  height: 100rpx;
+
+  display: flex;
+  justify-content: center;
+	align-items: center;
+
+  font: 16px PingFangSC-Regular;
+  background-image: linear-gradient(-90deg, #FCE105 2%, #FECD15 100%);
+  border-radius: 2px;
+  color: #222222;
+}
+
+.button-close {
+  background: red; 
+  position: absolute; 
+  top: 0;
+  right: 0;
+  width: 66rpx; 
+  height: 66rpx;
+}
+
+.border-red {
+  border: solid 1px red;
 }

@@ -1,40 +1,63 @@
-<template name="test">
-  <view>
-    First Name: {{ firstName }}, Last Name: {{ lastName }}
+<template name="product_price">
+  <view class='flex baseline border-red'>
+    <view style='margin-top:30rpx; font: 14px Helvetica; height:100%; color:#E65353 '>￥</view>
+    <view style='font: 24px Helvetica; height:100%; color:#E65353 '>{{ price }}</view>
   </view>
 </template>
 
-<template is="test" data="{{...testData1}}"></template>
-<template is="test" data="{{...testData2}}"></template>
+<view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
+  <view class="modals-bg" bindtap="hideModal"></view>
+  <view class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
+    <button class='flex center button-close' bindtap="hideModal">X</button>
 
+    <view class='flex column dialog-container'>
+      <!-- 商品详情展示 -->
+      <view class='flex'>
+        <image class="icon border-red" src='../../images/shop.png'></image>
+        <view class='detail border-red flex column'>
+          <template is="product_price" data="{{...productInfo}}"></template>
+          <view class='detail-attr-selected' style='margin-top:14rpx;'>已选：黑色、39</view>
+          <view class='detail-attr-selected'>数量：10</view>
+        </view>
+      </view>
 
-<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}" ></view>  
-<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">  
-<!--对话框标题-->  
-<view class="dialog-title">  
-  请输入新地址  
-</view>  
- <view class="line-top"></view>  
-<!--对话框输入部分-->  
-<view class="input-view"> 
-<view class="input01"></view>
- <textarea class="input-style" type="text"   placeholder="请输入新地址"
-  bindblur="bind_textarea"  value="{{address}}" />
-  <!--<input type="text" bindblur="input_content" class="input-style"/>  -->
-</view>  
-<!--对话框按钮-->  
-<view class="line-top">    
-</view>  
-<view class="btn-view">  
-  <view class="btn-cancel" bindtap="click_cancel">    
-          取 消  
-  </view>  
-  <view class="btn-line">  
-  </view>  
-  <view class="btn-cancel" bindtap="click_ok">    
-          确 定  
-  </view>  
-</view>  
-</view> 
+      <view class='attr-list'>
+        <!-- 商品规格列表 -->
+        <view class='flex column attr-container'>
+          <view class='attr-title'>颜色</view>
+          <view class='flex attr-items'>
+            <view class='flex vc attr-item attr-item-selected'>黑色</view>
+            <view class='flex vc attr-item attr-item-unselected'>白色</view>
+          </view>
+        </view>
 
-<button bindtap='showModal'>测试弹出层</button>
+        <view class='flex column attr-container'>
+          <view class='attr-title'>尺码</view>
+          <view class='flex wrap attr-items'>
+            <view class='flex vc attr-item attr-item-selected'>39</view>
+            <view class='flex vc attr-item attr-item-unselected'>40</view>
+            <view class='flex vc attr-item attr-item-unselected'>41</view>
+            <view class='flex vc attr-item attr-item-unselected'>42</view>
+            <view class='flex vc attr-item attr-item-unselected'>43</view>
+            <view class='flex vc attr-item attr-item-unselected'>44</view>
+            <view class='flex vc attr-item attr-item-unselected'>45</view>
+            <view class='flex vc attr-item attr-item-unselected'>46</view>
+          </view>
+        </view>
+
+        <view class='flex twoend vc attr-container'>
+          <view class='attr-title'>数量</view>
+          <view class='flex' style='width:210rpx;'>
+            <image style='width:60rpx;height:60rpx;'></image>
+            <view class='flex center attr-title' style='width:90rpx;height:60rpx;'>1</view>
+            <image style='width:60rpx;height:60rpx;'></image>
+          </view>
+        </view>
+
+        <view class='button-confirm'>确定</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<button bindtap="showModal">点我</button>

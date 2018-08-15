@@ -9,81 +9,60 @@ var global_data = {
 }
 
 Page({
-  data:{
-    demoText:global_data.name,
-    testData1: { "firstName": "Jack", "lastName": "Dothen" },
-    testData2: { "firstName": "Lucy", "lastName": "Rose" },
-  },
-  changeme: function(e) {
-    console.log(this.demoText)
-    this.setData({
-      demoText: 'MINA'
-    })
-  },
-
-  showModal: function () {
-    // 显示遮罩层    
-    var animation = wx.createAnimation({
-      duration: 200,
-      timingFunction: "ease-in-out",
-      delay: 0
-    })
-    this.animation = animation
-    animation.translateY(300).step()
-    this.setData({
-      animationData: animation.export(),
-      showModalStatus: true
-    })
-    setTimeout(function () {
-      animation.translateY(0).step()
-      this.setData({
-        animationData: animation.export()
-      })
-    }.bind(this), 20)
-  },
-  //myview 为点击控件的bindtap 应用时写在对应控件中就好  
-  myview: function () {
-    if (this.data.showModalStatus) {
-      this.hideModal();
-    } else {
-      this.showModal();
+  data: {
+    hideModal: true, //模态框的状态  true-隐藏  false-显示
+    animationData: {},//
+    productInfo: {
+      price: '200.01'
     }
   },
-  hideModal: function () {
-    // 隐藏遮罩层    
+
+  // 显示遮罩层
+  showModal: function () {
+    var that = this;
+    that.setData({
+      hideModal: false
+    })
     var animation = wx.createAnimation({
-      duration: 200,
-      timingFunction: "linear",
-      delay: 0
+      duration: 300,//动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
+      timingFunction: 'ease',//动画的效果 默认值是linear
     })
     this.animation = animation
-    animation.translateY(300).step()
-    this.setData({
-      animationData: animation.export(),
-    })
     setTimeout(function () {
-      animation.translateY(0).step()
-      this.setData({
-        animationData: animation.export(),
-        showModalStatus: false
+      that.fadeIn();//调用显示动画
+    }, 200)
+  },
+
+  // 隐藏遮罩层
+  hideModal: function () {
+    var that = this;
+    var animation = wx.createAnimation({
+      duration: 300,//动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
+      timingFunction: 'ease',//动画的效果 默认值是linear
+    })
+    this.animation = animation
+    that.fadeDown();//调用隐藏动画   
+    setTimeout(function () {
+      that.setData({
+        hideModal: true
       })
-    }.bind(this), 20)
+    }, 300)//先执行下滑动画，再隐藏模块 
+
   },
-  click_cancel: function () {
-    console.log("点击取消");
-    this.hideModal();
+
+  //动画集
+  fadeIn: function () {
+    this.animation.translateY(0).step()
+    this.setData({
+      animationData: this.animation.export()//动画实例的export方法导出动画数据传递给组件的animation属性
+    })
   },
-  click_ok: function () {
-    console.log("点击确定，输入的信息为为==", inputinfo);
-    this.hideModal();
+  fadeDown: function () {
+    this.animation.translateY(520).step()
+    this.setData({
+      animationData: this.animation.export(),
+    })
   },
-  input_content: function (e) {
-    console.log(e);
-    inputinfo = e.detail.value;
-  },
-  onShow: function() {
-  }
-  
 })
 
 
