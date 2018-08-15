@@ -47,9 +47,9 @@
 
         <view class='flex twoend vc attr-container'>
           <view class='attr-title'>数量</view>
-          <view class='flex' style='width:210rpx;'>
+          <view class='flex buy-count-view'>
             <image style='width:60rpx;height:60rpx;'></image>
-            <view class='flex center attr-title' style='width:90rpx;height:60rpx;'>1</view>
+            <view class='flex center attr-title buy-count-field'>1</view>
             <image style='width:60rpx;height:60rpx;'></image>
           </view>
         </view>

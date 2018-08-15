@@ -91,6 +91,17 @@
   border: 1px solid #FCE105;
 }
 
+.buy-count-view {
+  border: 1px solid #DDDDDD;
+  border-radius: 2px;
+  width: 210rpx;
+}
+
+.buy-count-field {
+  width: 90rpx;
+  height: 60rpx;
+}
+
 .button-confirm {
   margin-top: 100rpx;
   height: 100rpx;
