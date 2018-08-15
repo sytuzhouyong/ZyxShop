@@ -1,0 +1,7 @@
+/* pages/product/product.wxss */
+
+@import "../../utils/css/flex.wxss";
+
+.text {
+	font: 12px Helvetica;
+}

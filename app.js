@@ -2,7 +2,11 @@
 App({
   onLaunch: function (options) {
     let systemInfo = wx.getSystemInfoSync()
+    this.globalData.windowWidth = systemInfo.windowWidth
+    this.globalData.windowHeight = systemInfo.windowHeight
     this.globalData.widthScale = systemInfo.windowWidth / 750.0
+    this.globalData.heightScale = systemInfo.windowheight / 750.0
+
 
     console.log('options = ', options)
     // 展示本地存储能力
@@ -42,6 +46,8 @@ App({
   },
   globalData: {
     userInfo: null,
+    windowWidth: 0,
+    windowHeight: 0,
     widthScale: 0,  // 宽度缩放比例
   }
 })

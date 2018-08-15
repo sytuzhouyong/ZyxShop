@@ -3,8 +3,8 @@ const app = getApp()
 var inputinfo = "";
 
 var global_data = {
-  animationData: "",
-  showModalStatus: false,
+  animationData: {},
+  showModalStatus: true,
   address: ""
 }
 
@@ -25,7 +25,7 @@ Page({
     // 显示遮罩层    
     var animation = wx.createAnimation({
       duration: 200,
-      timingFunction: "linear",
+      timingFunction: "ease-in-out",
       delay: 0
     })
     this.animation = animation
@@ -82,22 +82,6 @@ Page({
     inputinfo = e.detail.value;
   },
   onShow: function() {
-    var animation = wx.createAnimation({
-      duration: 1000,
-      timingFunction: "ease",
-    })
-    animation.scale(2, 2).rotate(45).step();
-
-    this.setData({
-      animationData: animation.export()
-    })
-
-    setTimeout(function () {
-      animation.translate(30).step();
-      this.setData({
-        animationData: animation.export()
-      })
-    }.bind(this), 1000)
   }
   
 })

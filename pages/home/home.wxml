@@ -33,7 +33,7 @@
 
 <view class='products1x2-view' scroll-y>
   <view class='product1x2-item-view' wx:for="{{productList}}" wx:key='product'>
-    <navigator url='../demo/demo?id={{item.id}}'>
+    <navigator url='../product/product?id={{item.id}}'>
       <image class='product1x2-item__image'src='{{item.imagePath}}' mode='aspectFit' ></image> 
       <view class='product1x2-item__text'>{{item.name}}</view> 
     </navigator>

@@ -1,0 +1,41 @@
+<!--pages/product/product.wxml-->
+
+<view class='flex wrap twoend border1' style='width: 100%; height:100rpx;'>
+	<view class='flex vc border2' style='width: 60%; font-weight:bold;'>
+		<image src='../../images/vip_member.png' mode='aspectFit' style='width:124rpx; height:100%; margin-left:20rpx;'></image>
+		<view style='width:20rpx;'></view>
+		<!-- 售价 -->
+		<view class='flex baseline border3'>
+			<view style='font: 12px Helvetica; height:100%;'>￥</view>
+			<view style='font: 18px Helvetica; height:100%;'>200.00</view>
+		</view>
+		<view class='border1' style='width:40rpx;'></view>
+		<!-- 划线价 -->
+		<view class='flex baseline border2' style='color:#999;'>
+			<view style='font: 12px Helvetica; height:100%;'>￥</view>
+			<view style='font: 18px Helvetica; height:100%; text-decoration:line-through;'>300.00</view>
+		</view>
+	</view>
+	<view class='flex center border3' style='width:100rpx;margin-right:20rpx;'>
+		<image src='../../images/not_collected.png' style='width:36rpx; height:34rpx'></image>
+		<view style='width:10rpx;'></view>
+		<view style='font: 12px Helvetica;'>收藏</view>
+	</view>
+</view>
+
+<!-- 商品名称 -->
+<view style='margin-left:20rpx; margin-right:20rpx; margin-top:20rpx; margin-bottom:20rpx; font-size:16px; font-weight:medium'>
+	贝丽丝香水沐浴露29元包邮 直降50元 限量5000件 法国大师调香 凡尔赛花园600ml
+</view>
+<view class='line'></view>
+<view class='flex twoend' style='height:80rpx;'>
+	<view class='flex vc' style='font-size:14px; '>
+		<view style='margin-left:20rpx;'>分期</view>
+		<view style='padding-left: 40rpx;'>￥ 1.77 x 6期</view>
+	</view>
+	<view class='flex vc' style='margin-right:20rpx;'>
+		x
+	</view>
+</view>
+<view class='span'></view>
+
