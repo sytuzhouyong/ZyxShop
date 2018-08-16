@@ -1,5 +1,9 @@
  @import "../../utils/css/flex.wxss";
 
+/* Page {
+  overflow-y: hidden;
+} */
+
 /*模态框*/
 .modals {
   position:fixed; 
@@ -45,13 +49,16 @@
   height: 190rpx;
 }
 
-.detail-attr-selected {
+.detail-attr-text {
   font: 14px PingFangSC-Regular;
   color: #222222;
 }
 
+/* 2个规格的高度 */
 .attr-list {
-  margin-top: 0rpx;
+  max-height: 458rpx;
+  height: 458rpx;
+  overflow: scroll;
 }
 
 .attr-container {

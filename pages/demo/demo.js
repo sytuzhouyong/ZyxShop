@@ -1,19 +1,103 @@
 const app = getApp()
 
-var inputinfo = "";
-
-var global_data = {
-  animationData: {},
-  showModalStatus: true,
-  address: ""
-}
-
 Page({
   data: {
     hideModal: true, //模态框的状态  true-隐藏  false-显示
+    isScroll: true,
     animationData: {},//
+
+    buyCount: 1,
+    selectedAttrsDesc: '',
+    selectedAttrIndexs: [],
+
     productInfo: {
-      price: '200.01'
+      imageUrl: '',
+      price: '200.01',
+      attrs: [
+        {
+          title: '颜色',
+          values: 
+          [
+            {
+              'name': '黑色',
+            }, 
+            {
+              'name': '白色',
+            }
+          ]
+        },
+        {
+          title: '尺码',
+          values:
+            [
+              {
+                'name': '39',
+              },
+              {
+                'name': '40',
+              },
+              {
+                'name': '41',
+              },
+              {
+                'name': '42',
+              },
+              {
+                'name': '43',
+              },
+              {
+                'name': '44',
+              }
+            ]
+        }
+      ]
+    }
+  },
+
+  tappOnAttrItem: function(e) {
+    console.log(e)
+    var attrModel = e.target.dataset.attrtypemodel
+    var attrIndex = e.target.dataset.attrtypeindex
+    var attrItemModel = e.target.dataset.attritemvalue
+    var attrItemIndex = e.target.dataset.attritemindex
+
+    // 更新已选规格
+    var specs = ''
+    var attrs = this.data.productInfo.attrs;
+    for (var i = 0; i < attrs.length; i++) {
+      if (i == attrIndex) {
+        specs += attrs[i].values[attrItemIndex].name + '、'
+      } else {
+        var index = this.data.selectedAttrIndexs[i];
+        specs += attrs[i].values[index].name + '、'
+      }
+    }
+    specs = specs.substr(0, specs.length - 1)
+
+    this.setData({
+      ['selectedAttrIndexs[' + attrIndex + ']']: attrItemIndex,
+      selectedAttrsDesc: specs
+    })
+
+    console.log(this.data.selectedAttrIndexs)
+  },
+
+  decreaseCount: function () {
+    var count = this.data.buyCount
+    if (count > 1) {
+      count -= 1
+      this.setData({
+        buyCount: count
+      })
+    }
+  },
+  increaseCount: function () {
+    var count = this.data.buyCount
+    if (count < 20) {
+      count += 1
+      this.setData({
+        buyCount: count
+      })
     }
   },
 
@@ -21,7 +105,8 @@ Page({
   showModal: function () {
     var that = this;
     that.setData({
-      hideModal: false
+      hideModal: false,
+      isScroll: false
     })
     var animation = wx.createAnimation({
       duration: 300,//动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
@@ -44,7 +129,8 @@ Page({
     that.fadeDown();//调用隐藏动画   
     setTimeout(function () {
       that.setData({
-        hideModal: true
+        hideModal: true,
+        isScroll: true
       })
     }, 300)//先执行下滑动画，再隐藏模块 
 
@@ -63,6 +149,28 @@ Page({
       animationData: this.animation.export(),
     })
   },
+
+  onReady: function() {
+    console.log(this.data.productInfo)
+
+    if (this.data.selectedAttrIndexs.length == 0) {
+      var indexs = []
+    }
+
+    var specs = ''
+
+    var attrs = this.data.productInfo.attrs;
+    for (var i = 0; i < attrs.length; i++) {
+      indexs.push(0)
+      specs += attrs[i].values[0].name + '、'
+    }
+    specs = specs.substr(0, specs.length - 1)
+
+    this.setData({
+      selectedAttrIndexs: indexs,
+      selectedAttrsDesc: specs
+    })
+  }
 })
 
 

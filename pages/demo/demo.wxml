@@ -1,6 +1,6 @@
 <template name="product_price">
   <view class='flex baseline border-red'>
-    <view style='margin-top:30rpx; font: 14px Helvetica; height:100%; color:#E65353 '>￥</view>
+    <view style='margin-top:30rpx; font: 14px Helvetica; height:100%; color:#E65353'>￥</view>
     <view style='font: 24px Helvetica; height:100%; color:#E65353 '>{{ price }}</view>
   </view>
 </template>
@@ -16,46 +16,42 @@
         <image class="icon border-red" src='../../images/shop.png'></image>
         <view class='detail border-red flex column'>
           <template is="product_price" data="{{...productInfo}}"></template>
-          <view class='detail-attr-selected' style='margin-top:14rpx;'>已选：黑色、39</view>
-          <view class='detail-attr-selected'>数量：10</view>
+          <view class='flex' style='margin-top:14rpx;'>
+            <view class='detail-attr-text'>已选：</view>
+            <view class='detail-attr-text'>{{ selectedAttrsDesc }}</view>
+          </view>
+          <view class='flex'>
+            <view class='detail-attr-text'>数量：</view>
+            <view class='detail-attr-text'>{{ buyCount }}</view>
+          </view>
         </view>
       </view>
 
       <view class='attr-list'>
+
         <!-- 商品规格列表 -->
-        <view class='flex column attr-container'>
-          <view class='attr-title'>颜色</view>
-          <view class='flex attr-items'>
-            <view class='flex vc attr-item attr-item-selected'>黑色</view>
-            <view class='flex vc attr-item attr-item-unselected'>白色</view>
-          </view>
-        </view>
-
-        <view class='flex column attr-container'>
-          <view class='attr-title'>尺码</view>
+        <view class='flex column attr-container' wx:for='{{productInfo.attrs}}' wx:for-item='attr' wx:for-index='attrIndex' wx:key='attr'>
+          <view class='attr-title'>{{ attr.title }}</view>
           <view class='flex wrap attr-items'>
-            <view class='flex vc attr-item attr-item-selected'>39</view>
-            <view class='flex vc attr-item attr-item-unselected'>40</view>
-            <view class='flex vc attr-item attr-item-unselected'>41</view>
-            <view class='flex vc attr-item attr-item-unselected'>42</view>
-            <view class='flex vc attr-item attr-item-unselected'>43</view>
-            <view class='flex vc attr-item attr-item-unselected'>44</view>
-            <view class='flex vc attr-item attr-item-unselected'>45</view>
-            <view class='flex vc attr-item attr-item-unselected'>46</view>
+            <view class='flex vc attr-item {{itemIndex == selectedAttrIndexs[attrIndex] ? "attr-item-selected" : "attr-item-unselected"}}' bindtap='tappOnAttrItem' 
+                  data-attrtypeindex='{{attrIndex}}' data-attrtypemodel='{{attr}}' 
+                  data-attritemindex='{{itemIndex}}' data-attritemvalue='{{value}}'
+                  wx:for='{{attr.values}}' wx:for-item='value' wx:for-index='itemIndex' wx:key='value'>
+                  {{value.name}}
+            </view>
           </view>
         </view>
-
-        <view class='flex twoend vc attr-container'>
-          <view class='attr-title'>数量</view>
-          <view class='flex buy-count-view'>
-            <image style='width:60rpx;height:60rpx;'></image>
-            <view class='flex center attr-title buy-count-field'>1</view>
-            <image style='width:60rpx;height:60rpx;'></image>
-          </view>
-        </view>
-
-        <view class='button-confirm'>确定</view>
       </view>
+      <view class='flex twoend vc attr-container'>
+        <view class='attr-title'>数量</view>
+        <view class='flex buy-count-view'>
+          <image style='width:60rpx;height:60rpx;' bindtap='decreaseCount'></image>
+          <view class='flex center attr-title buy-count-field'>{{buyCount}}</view>
+          <image style='width:60rpx;height:60rpx;' bindtap='increaseCount'></image>
+        </view>
+      </view>
+
+      <view class='button-confirm'>确定</view>
     </view>
   </view>
 </view>
