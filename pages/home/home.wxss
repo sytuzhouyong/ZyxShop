@@ -1,4 +1,7 @@
 /* pages/home/home.wxss */
+
+@import "../../utils/css/flex.wxss";
+
 .category-view {
   display: flex;
   width: 100%;
